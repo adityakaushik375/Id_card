@@ -302,63 +302,94 @@ const StaffIDCard: React.FC = () => {
                 id="staff-id-card-front"
                 className="w-64 h-96 bg-white rounded-lg shadow-xl overflow-hidden relative border border-gray-200"
               >
-                {/* Orange Header */}
-                <div className="bg-orange-500 h-20 relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600"></div>
-                  <div className="relative z-10 px-4 py-3 text-white text-center">
-                    <h2 className="text-base font-bold">GEETA UNIVERSITY</h2>
-                    <p className="text-sm opacity-90">STAFF ID CARD</p>
+                {/* Blue Header */}
+                <div className="bg-blue-800 h-4 w-full"></div>
+
+                {/* Logo and University Name */}
+                <div className="px-4 py-3 bg-white">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-blue-800 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-lg">G</span>
+                    </div>
+                    <div>
+                      <h2 className="text-orange-500 font-bold text-lg">GEETA</h2>
+                      <h3 className="text-blue-800 font-bold text-lg">UNIVERSITY</h3>
+                      <p className="text-xs text-gray-600">Panipat, Delhi NCR, INDIA</p>
+                      <p className="text-xs text-gray-600">NAAC ACCREDITED UNIVERSITY</p>
+                    </div>
                   </div>
-                  {/* Diagonal cut */}
-                  <div className="absolute bottom-0 left-0 w-0 h-0 border-l-[256px] border-l-transparent border-b-[24px] border-b-white"></div>
                 </div>
 
-                {/* Content Area */}
-                <div className="p-4 pt-6">
-                  <div className="flex flex-col items-center space-y-4">
-                    {/* Photo */}
-                    <div className="w-24 h-28 bg-gray-100 rounded border-2 border-gray-300 flex items-center justify-center overflow-hidden">
+                {/* Photo Section */}
+                <div className="px-4 py-2">
+                  <div className="flex justify-center">
+                    <div className="w-24 h-32 bg-gray-200 border-2 border-gray-300 flex items-center justify-center overflow-hidden">
                       {staffData.photo ? (
                         <img src={staffData.photo} alt="Staff" className="w-full h-full object-cover" />
                       ) : (
                         <User className="w-12 h-12 text-gray-400" />
                       )}
                     </div>
+                  </div>
+                </div>
 
-                    {/* Details */}
-                    <div className="w-full text-sm space-y-2">
-                      <div className="flex justify-between">
-                        <span className="font-semibold text-gray-700">Reg No</span>
-                        <span className="text-gray-900">{staffData.employeeId || 'EMP001'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold text-gray-700">Staff ID</span>
-                        <span className="text-gray-900">{staffData.employeeId || 'EMP001'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold text-gray-700">Staff Name</span>
-                        <span className="text-gray-900 text-right">{staffData.name || 'Name Here'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold text-gray-700">Department</span>
-                        <span className="text-gray-900 text-right">{staffData.department || 'Dept Here'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold text-gray-700">Position</span>
-                        <span className="text-gray-900 text-right">{staffData.position || 'Position Here'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="font-semibold text-gray-700">Emergency</span>
-                        <span className="text-gray-900">{staffData.emergencyContact || '123-456-7890'}</span>
-                      </div>
+                {/* Orange and Blue Section */}
+                <div className="flex h-16">
+                  <div className="w-1/4 bg-orange-500"></div>
+                  <div className="w-1/2 bg-white"></div>
+                  <div className="w-1/4 bg-orange-500"></div>
+                </div>
+
+                {/* Blue Section with Details */}
+                <div className="bg-blue-800 text-white px-4 py-4 flex-1">
+                  <div className="text-center mb-3">
+                    <h3 className="font-bold text-lg">{staffData.name || 'NAME'}</h3>
+                    <p className="text-sm">{staffData.position || 'DESIGNATION'}</p>
+                  </div>
+                  
+                  <div className="space-y-1 text-xs">
+                    <div className="flex">
+                      <span className="w-20">Emp ID</span>
+                      <span className="mr-2">:</span>
+                      <span>{staffData.employeeId || ''}</span>
+                    </div>
+                    <div className="flex">
+                      <span className="w-20">Dept.</span>
+                      <span className="mr-2">:</span>
+                      <span>{staffData.department || ''}</span>
+                    </div>
+                    <div className="flex">
+                      <span className="w-20">Phone No.</span>
+                      <span className="mr-2">:</span>
+                      <span>{staffData.phone || ''}</span>
+                    </div>
+                    <div className="flex">
+                      <span className="w-20">Address</span>
+                      <span className="mr-2">:</span>
+                      <span className="text-xs">{staffData.address || ''}</span>
+                    </div>
+                    <div className="flex">
+                      <span className="w-20">Blood Group</span>
+                      <span className="mr-2">:</span>
+                      <span></span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-between items-end mt-4">
+                    <div className="text-xs">
+                      <div className="text-orange-300">Asstt Registrar</div>
+                      <div>Registrar</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Footer */}
-                <div className="absolute bottom-0 left-0 right-0 bg-orange-500 px-4 py-1">
-                  <div className="text-white text-xs text-center">
-                    University address: Panipat, Haryana, India
+                <div className="bg-white px-2 py-1">
+                  <div className="text-blue-800 text-xs text-center font-semibold">
+                    +91 99966 23012 | www.geetauniversity.edu.in
+                  </div>
+                  <div className="text-blue-800 text-xs text-center">
+                    NH-71A, Naultha, Panipat, Haryana (132145), INDIA
                   </div>
                 </div>
               </div>
