@@ -321,17 +321,7 @@ const StaffIDCard: React.FC = () => {
                 </div>
 
                 {/* Photo Section */}
-                <div className="px-4 py-2">
-                  <div className="flex justify-center">
-                    <div className="w-24 h-32 bg-gray-200 border-2 border-gray-300 flex items-center justify-center overflow-hidden">
-                      {staffData.photo ? (
-                        <img src={staffData.photo} alt="Staff" className="w-full h-full object-cover" />
-                      ) : (
-                        <User className="w-12 h-12 text-gray-400" />
-                      )}
-                    </div>
-                  </div>
-                </div>
+            
 
                 {/* Orange and Blue Section */}
                 <div className="flex h-16">
