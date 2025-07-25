@@ -4,32 +4,22 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 interface StaffData {
-  name: string;
-  employeeId: string;
-  department: string;
-  position: string;
-  joiningDate: string;
-  email: string;
+  empId: string;
+  dept: string;
   phone: string;
-  photo: string;
-  emergencyContact: string;
   address: string;
-  expiryDate: string;
+  bloodGroup: string;
+  photo: string;
 }
 
 const StaffIDCard: React.FC = () => {
   const [staffData, setStaffData] = useState<StaffData>({
-    name: '',
-    employeeId: '',
-    department: '',
-    position: '',
-    joiningDate: '',
-    email: '',
+    empId: '',
+    dept: '',
     phone: '',
-    photo: '',
-    emergencyContact: '',
     address: '',
-    expiryDate: ''
+    bloodGroup: '',
+    photo: ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -130,7 +120,7 @@ const StaffIDCard: React.FC = () => {
   pdf.addImage(frontImgData, 'PNG', xStart, yStart, cardWidth, cardHeight);
   pdf.addImage(backImgData, 'PNG', xStart + cardWidth + gapBetweenCards, yStart, cardWidth, cardHeight);
 
-  pdf.save(`${staffData.name || 'Staff'}_ID_Card.pdf`);
+  pdf.save(`${staffData.empId || 'Staff'}_ID_Card.pdf`);
 };
 
   return (
@@ -146,23 +136,11 @@ const StaffIDCard: React.FC = () => {
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Emp ID</label>
                 <input
                   type="text"
-                  name="name"
-                  value={staffData.name}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter full name"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Employee ID</label>
-                <input
-                  type="text"
-                  name="employeeId"
-                  value={staffData.employeeId}
+                  name="empId"
+                  value={staffData.empId}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Enter employee ID"
@@ -170,68 +148,14 @@ const StaffIDCard: React.FC = () => {
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Department</label>
-                <select
-                  name="department"
-                  value={staffData.department}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="">Select Department</option>
-                  <option value="Human Resources">Human Resources</option>
-                  <option value="Information Technology">Information Technology</option>
-                  <option value="Finance">Finance</option>
-                  <option value="Administration">Administration</option>
-                  <option value="Academic">Academic</option>
-                  <option value="Student Affairs">Student Affairs</option>
-                  <option value="Library">Library</option>
-                  <option value="Maintenance">Maintenance</option>
-                </select>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Position</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Dept</label>
                 <input
                   type="text"
-                  name="position"
-                  value={staffData.position}
+                  name="dept"
+                  value={staffData.dept}
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter position"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Joining Date</label>
-                <input
-                  type="date"
-                  name="joiningDate"
-                  value={staffData.joiningDate}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
-                <input
-                  type="date"
-                  name="expiryDate"
-                  value={staffData.expiryDate}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={staffData.email}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter email"
+                  placeholder="Enter department"
                 />
               </div>
               
@@ -248,18 +172,6 @@ const StaffIDCard: React.FC = () => {
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Emergency Contact</label>
-                <input
-                  type="tel"
-                  name="emergencyContact"
-                  value={staffData.emergencyContact}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter emergency contact"
-                />
-              </div>
-              
-              <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
                 <textarea
                   name="address"
@@ -268,6 +180,18 @@ const StaffIDCard: React.FC = () => {
                   rows={2}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Enter address"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Blood Group</label>
+                <input
+                  type="text"
+                  name="bloodGroup"
+                  value={staffData.bloodGroup}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Enter blood group (e.g., A+, B-, O+)"
                 />
               </div>
               
@@ -322,22 +246,18 @@ const StaffIDCard: React.FC = () => {
                 </div>
 
                 {/* Name positioned over background */}
-                <div className="absolute top-[260px] left-[20px] right-[20px] text-center">
-                  <h3 className="font-bold text-lg text-white drop-shadow-lg">{staffData.name || 'NAME'}</h3>
-                  <p className="text-sm text-white drop-shadow-lg">{staffData.position || 'DESIGNATION'}</p>
-                </div>
                 
                 {/* Details positioned over background */}
                 <div className="absolute top-[310px] left-[20px] right-[20px] space-y-1 text-xs text-white">
                   <div className="flex">
                     <span className="w-20 drop-shadow-lg">Emp ID</span>
                     <span className="mr-2 drop-shadow-lg">:</span>
-                    <span className="drop-shadow-lg">{staffData.employeeId || ''}</span>
+                    <span className="drop-shadow-lg">{staffData.empId || ''}</span>
                   </div>
                   <div className="flex">
                     <span className="w-20 drop-shadow-lg">Dept.</span>
                     <span className="mr-2 drop-shadow-lg">:</span>
-                    <span className="drop-shadow-lg">{staffData.department || ''}</span>
+                    <span className="drop-shadow-lg">{staffData.dept || ''}</span>
                   </div>
                   <div className="flex">
                     <span className="w-20 drop-shadow-lg">Phone No.</span>
@@ -352,7 +272,7 @@ const StaffIDCard: React.FC = () => {
                   <div className="flex">
                     <span className="w-20 drop-shadow-lg">Blood Group</span>
                     <span className="mr-2 drop-shadow-lg">:</span>
-                    <span className="drop-shadow-lg"></span>
+                    <span className="drop-shadow-lg">{staffData.bloodGroup || ''}</span>
                   </div>
                 </div>
               </div>
@@ -387,14 +307,6 @@ const StaffIDCard: React.FC = () => {
                   </div>
 
                   <div className="border-t pt-4 space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="font-semibold text-gray-700">Phone</span>
-                      <span className="text-gray-900">{staffData.phone || '123-456-7890'}</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="font-semibold text-gray-700">Mail</span>
-                      <span className="text-gray-900 text-right">{staffData.email || 'email@email.com'}</span>
-                    </div>
                     <div className="flex justify-between text-sm">
                       <span className="font-semibold text-gray-700">Website</span>
                       <span className="text-gray-900">www.geetauniversity.edu.in</span>
