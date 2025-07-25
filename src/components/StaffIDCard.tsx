@@ -301,85 +301,58 @@ const StaffIDCard: React.FC = () => {
               <div 
                 id="staff-id-card-front"
                 className="w-64 h-96 bg-white rounded-lg shadow-xl overflow-hidden relative border border-gray-200"
+                style={{
+                  backgroundImage: 'url("/src/assets/ID CARDS GU STAFF.png")',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat'
+                }}
               >
-                {/* Blue Header */}
-                <div className="bg-blue-800 h-4 w-full"></div>
-
-                {/* Logo and University Name */}
-                <div className="px-4 py-3 bg-white">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-blue-800 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">G</span>
-                    </div>
-                    <div>
-                      <h2 className="text-orange-500 font-bold text-lg">GEETA</h2>
-                      <h3 className="text-blue-800 font-bold text-lg">UNIVERSITY</h3>
-                      <p className="text-xs text-gray-600">Panipat, Delhi NCR, INDIA</p>
-                      <p className="text-xs text-gray-600">NAAC ACCREDITED UNIVERSITY</p>
-                    </div>
-                  </div>
+                {/* Photo positioned over background */}
+                <div className="absolute top-[120px] left-[20px] w-20 h-24 bg-gray-100 rounded border-2 border-gray-300 flex items-center justify-center overflow-hidden">
+                  {staffData.photo ? (
+                    <img
+                      src={staffData.photo}
+                      alt="Staff"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <User className="w-8 h-8 text-gray-400" />
+                  )}
                 </div>
 
-                {/* Photo Section */}
-            
-
-                {/* Orange and Blue Section */}
-                <div className="flex h-16">
-                  <div className="w-1/4 bg-orange-500"></div>
-                  <div className="w-1/2 bg-white"></div>
-                  <div className="w-1/4 bg-orange-500"></div>
+                {/* Name positioned over background */}
+                <div className="absolute top-[260px] left-[20px] right-[20px] text-center">
+                  <h3 className="font-bold text-lg text-white drop-shadow-lg">{staffData.name || 'NAME'}</h3>
+                  <p className="text-sm text-white drop-shadow-lg">{staffData.position || 'DESIGNATION'}</p>
                 </div>
-
-                {/* Blue Section with Details */}
-                <div className="bg-blue-800 text-white px-4 py-4 flex-1">
-                  <div className="text-center mb-3">
-                    <h3 className="font-bold text-lg">{staffData.name || 'NAME'}</h3>
-                    <p className="text-sm">{staffData.position || 'DESIGNATION'}</p>
+                
+                {/* Details positioned over background */}
+                <div className="absolute top-[310px] left-[20px] right-[20px] space-y-1 text-xs text-white">
+                  <div className="flex">
+                    <span className="w-20 drop-shadow-lg">Emp ID</span>
+                    <span className="mr-2 drop-shadow-lg">:</span>
+                    <span className="drop-shadow-lg">{staffData.employeeId || ''}</span>
                   </div>
-                  
-                  <div className="space-y-1 text-xs">
-                    <div className="flex">
-                      <span className="w-20">Emp ID</span>
-                      <span className="mr-2">:</span>
-                      <span>{staffData.employeeId || ''}</span>
-                    </div>
-                    <div className="flex">
-                      <span className="w-20">Dept.</span>
-                      <span className="mr-2">:</span>
-                      <span>{staffData.department || ''}</span>
-                    </div>
-                    <div className="flex">
-                      <span className="w-20">Phone No.</span>
-                      <span className="mr-2">:</span>
-                      <span>{staffData.phone || ''}</span>
-                    </div>
-                    <div className="flex">
-                      <span className="w-20">Address</span>
-                      <span className="mr-2">:</span>
-                      <span className="text-xs">{staffData.address || ''}</span>
-                    </div>
-                    <div className="flex">
-                      <span className="w-20">Blood Group</span>
-                      <span className="mr-2">:</span>
-                      <span></span>
-                    </div>
+                  <div className="flex">
+                    <span className="w-20 drop-shadow-lg">Dept.</span>
+                    <span className="mr-2 drop-shadow-lg">:</span>
+                    <span className="drop-shadow-lg">{staffData.department || ''}</span>
                   </div>
-                  
-                  <div className="flex justify-between items-end mt-4">
-                    <div className="text-xs">
-                      <div className="text-orange-300">Asstt Registrar</div>
-                      <div>Registrar</div>
-                    </div>
+                  <div className="flex">
+                    <span className="w-20 drop-shadow-lg">Phone No.</span>
+                    <span className="mr-2 drop-shadow-lg">:</span>
+                    <span className="drop-shadow-lg">{staffData.phone || ''}</span>
                   </div>
-                </div>
-
-                {/* Footer */}
-                <div className="bg-white px-2 py-1">
-                  <div className="text-blue-800 text-xs text-center font-semibold">
-                    +91 99966 23012 | www.geetauniversity.edu.in
+                  <div className="flex">
+                    <span className="w-20 drop-shadow-lg">Address</span>
+                    <span className="mr-2 drop-shadow-lg">:</span>
+                    <span className="text-xs drop-shadow-lg">{staffData.address || ''}</span>
                   </div>
-                  <div className="text-blue-800 text-xs text-center">
-                    NH-71A, Naultha, Panipat, Haryana (132145), INDIA
+                  <div className="flex">
+                    <span className="w-20 drop-shadow-lg">Blood Group</span>
+                    <span className="mr-2 drop-shadow-lg">:</span>
+                    <span className="drop-shadow-lg"></span>
                   </div>
                 </div>
               </div>
