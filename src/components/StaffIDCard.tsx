@@ -4,6 +4,8 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 interface StaffData {
+  name: string;
+  designation: string;
   empId: string;
   dept: string;
   phone: string;
@@ -14,6 +16,8 @@ interface StaffData {
 
 const StaffIDCard: React.FC = () => {
   const [staffData, setStaffData] = useState<StaffData>({
+    name: '',
+    designation: '',
     empId: '',
     dept: '',
     phone: '',
@@ -121,7 +125,7 @@ const StaffIDCard: React.FC = () => {
   pdf.addImage(backImgData, 'PNG', xStart + cardWidth + gapBetweenCards, yStart, cardWidth, cardHeight);
 
   pdf.save(`${staffData.empId || 'Staff'}_ID_Card.pdf`);
-};
+  };
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -135,6 +139,30 @@ const StaffIDCard: React.FC = () => {
             </h2>
             
             <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={staffData.name}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Enter full name"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Designation</label>
+                <input
+                  type="text"
+                  name="designation"
+                  value={staffData.designation}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Enter designation"
+                />
+              </div>
+              
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Emp ID</label>
                 <input
@@ -224,31 +252,36 @@ const StaffIDCard: React.FC = () => {
               <h3 className="text-xl font-bold text-gray-800 mb-4">Front Side</h3>
               <div 
                 id="staff-id-card-front"
-                className="w-64 h-96 bg-white rounded-lg shadow-xl overflow-hidden relative border border-gray-200"
+                className="w-64 h-96 bg-white rounded-lg shadow-xl overflow-hidden relative border border-gray-200 p-4"
                 style={{
                   backgroundImage: 'url("/src/assets/ID CARDS GU STAFF.png")',
-                  backgroundSize: 'cover',
+                  backgroundSize: 'contain',
                   backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
+                  backgroundRepeat: 'no-repeat',
+                  backgroundOrigin: 'content-box'
                 }}
               >
                 {/* Photo positioned over background */}
-                <div className="absolute top-[120px] left-[2000px] w-20 h-24 bg-gray-100 rounded border-2 border-gray-300 flex items-center justify-center overflow-hidden">
+                <div className="absolute top-[140px] left-[20px] w-20 h-24 bg-gray-100 rounded border-2 border-gray-300 flex items-center justify-center overflow-hidden">
                   {staffData.photo ? (
                     <img
                       src={staffData.photo}
                       alt="Staff"
-                      className="w-full z-100 h-full object-cover"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <User className="w-8 h-8 text-gray-400" />
                   )}
                 </div>
 
-                {/* Name positioned over background */}
+                {/* Name and Designation positioned over background */}
+                <div className="absolute top-[100px] left-[110px] right-[20px] text-sm font-bold text-white drop-shadow-lg">
+                  <div>{staffData.name || 'Name Here'}</div>
+                  <div className="text-xs font-normal">{staffData.designation || 'Designation Here'}</div>
+                </div>
                 
                 {/* Details positioned over background */}
-                <div className="absolute top-[250px] left-[20px] right-[20px] space-y-1 text-xs bg-[#233972] text-white">
+                <div className="absolute top-[270px] left-[20px] right-[20px] space-y-1 text-xs text-white">
                   <div className="flex">
                     <span className="w-20 drop-shadow-lg">Emp ID</span>
                     <span className="mr-2 drop-shadow-lg">:</span>
