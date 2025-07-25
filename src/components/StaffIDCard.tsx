@@ -238,7 +238,7 @@ const StaffIDCard: React.FC = () => {
                     <img
                       src={staffData.photo}
                       alt="Staff"
-                      className="w-full h-full object-cover"
+                      className="w-full z-100 h-full object-cover"
                     />
                   ) : (
                     <User className="w-8 h-8 text-gray-400" />
