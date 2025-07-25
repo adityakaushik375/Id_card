@@ -309,7 +309,7 @@ const StaffIDCard: React.FC = () => {
                 }}
               >
                 {/* Photo positioned over background */}
-                <div className="absolute top-[120px] left-[20px] w-20 h-24 bg-gray-100 rounded border-2 border-gray-300 flex items-center justify-center overflow-hidden">
+                <div className="absolute top-[120px] left-[2000px] w-20 h-24 bg-gray-100 rounded border-2 border-gray-300 flex items-center justify-center overflow-hidden">
                   {staffData.photo ? (
                     <img
                       src={staffData.photo}
