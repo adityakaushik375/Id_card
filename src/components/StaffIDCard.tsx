@@ -248,7 +248,7 @@ const StaffIDCard: React.FC = () => {
                 {/* Name positioned over background */}
                 
                 {/* Details positioned over background */}
-                <div className="absolute top-[250px] left-[20px] right-[20px] space-y-1 text-xs bg-[#233972] text-white bottom-[0px]">
+                <div className="absolute top-[250px] left-[20px] right-[20px] space-y-1 text-xs bg-[#233972] text-white bottom-[10px]">
                   <div className="flex">
                     <span className="w-20 drop-shadow-lg">Emp ID</span>
                     <span className="mr-2 drop-shadow-lg">:</span>
