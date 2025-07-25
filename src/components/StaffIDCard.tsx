@@ -267,7 +267,7 @@ const StaffIDCard: React.FC = () => {
                   <div className="flex">
                     <span className="w-20 drop-shadow-lg">Address</span>
                     <span className="mr-2 drop-shadow-lg">:</span>
-                    <span className="text-xs drop-shadow-lg">{staffData.address || ''}</span>
+                    <span className="text-sm drop-shadow-lg">{staffData.address || ''}</span>
                   </div>
                   <div className="flex">
                     <span className="w-20 drop-shadow-lg">Blood Group</span>
