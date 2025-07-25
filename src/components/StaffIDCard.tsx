@@ -135,7 +135,17 @@ const StaffIDCard: React.FC = () => {
             </h2>
             
             <div className="space-y-4">
-
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Emp ID</label>
+                <input
+                  type="text"
+                  name="empId"
+                  value={staffData.empId}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="Enter employee ID"
+                />
+              </div>
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Dept</label>
@@ -238,7 +248,7 @@ const StaffIDCard: React.FC = () => {
                 {/* Name positioned over background */}
                 
                 {/* Details positioned over background */}
-                <div className="absolute top-[310px] left-[20px] right-[20px] space-y-1 text-xs text-white">
+                <div className="absolute top-[250px] left-[20px] right-[20px] space-y-1 text-xs text-white">
                   <div className="flex">
                     <span className="w-20 drop-shadow-lg">Emp ID</span>
                     <span className="mr-2 drop-shadow-lg">:</span>
